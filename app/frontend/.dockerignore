@@ -1,0 +1,15 @@
+# Ignore node_modules — it's rebuilt during `npm install`
+node_modules
+
+# Git and local config files
+.git/
+.gitignore
+Dockerfile
+.dockerignore
+
+# OS or editor files
+*.log
+*.DS_Store
+.env
+.env.*
+.vscode/
