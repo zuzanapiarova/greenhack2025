@@ -247,3 +247,5 @@ Set:
 Payload URL: http://<your-jenkins-url>/github-webhook/
 Content type: application/json
 Events: Choose "Just the push event"
+
+Due to storage capacity on the t2.micro instance I have to remove running containers and their images, and then pull the new ones, which is a risk if the new ones ar epulled wrongly. In production this would be handled by tagging the pulled images and running them and only then removing the containers, but for now, it is sufficient. 
