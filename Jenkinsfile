@@ -145,14 +145,13 @@ pipeline {
                             # Stop and remove old frontend container
                             docker stop $FRONTEND_CONTAINER_NAME || true
                             docker rm $FRONTEND_CONTAINER_NAME || true
-
                             # Stop and remove old backend container
                             docker stop $BACKEND_CONTAINER_NAME || true
                             docker rm $BACKEND_CONTAINER_NAME || true
 
                             # Optional cleanup
                             docker system prune -af
-                            
+
                             # Pull latest images
                             docker pull $DOCKERHUB_USER/$FRONTEND_IMAGE:latest
                             docker pull $DOCKERHUB_USER/$BACKEND_IMAGE:latest
