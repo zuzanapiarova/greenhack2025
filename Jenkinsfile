@@ -140,28 +140,28 @@ pipeline {
                     // -o StrictHostKeyChecking=no flag tells SSH to skip host key verification, which avoids prompts like Are you sure you want to continue connecting (yes/no)?
                     sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@$EC2_PUBLIC_IP << EOF 
-                            echo Executing SSH block on EC2 instance
+echo Executing SSH block on EC2 instance
 
-                            # Stop and remove old frontend container
-                            docker stop $FRONTEND_CONTAINER_NAME || true
-                            docker rm $FRONTEND_CONTAINER_NAME || true
-                            # Stop and remove old backend container
-                            docker stop $BACKEND_CONTAINER_NAME || true
-                            docker rm $BACKEND_CONTAINER_NAME || true
+# Stop and remove old frontend container
+docker stop $FRONTEND_CONTAINER_NAME || true
+docker rm $FRONTEND_CONTAINER_NAME || true
+# Stop and remove old backend container
+docker stop $BACKEND_CONTAINER_NAME || true
+docker rm $BACKEND_CONTAINER_NAME || true
 
-                            # Optional cleanup
-                            docker system prune -af
+# Optional cleanup
+docker system prune -af
 
-                            # Pull latest images
-                            docker pull $DOCKERHUB_USER/$FRONTEND_IMAGE:latest
-                            docker pull $DOCKERHUB_USER/$BACKEND_IMAGE:latest
+# Pull latest images
+docker pull $DOCKERHUB_USER/$FRONTEND_IMAGE:latest
+docker pull $DOCKERHUB_USER/$BACKEND_IMAGE:latest
 
-                            # Run new frontend container
-                            docker run -d --name $FRONTEND_CONTAINER_NAME --restart unless-stopped -p 80:80 $DOCKERHUB_USER/$FRONTEND_IMAGE:latest
+# Run new frontend container
+docker run -d --name $FRONTEND_CONTAINER_NAME --restart unless-stopped -p 80:80 $DOCKERHUB_USER/$FRONTEND_IMAGE:latest
 
-                            # Run new backend container
-                            docker run -d --name $BACKEND_CONTAINER_NAME --restart unless-stopped -p 5000:5000 $DOCKERHUB_USER/$BACKEND_IMAGE:latest
-                            EOF
+# Run new backend container
+docker run -d --name $BACKEND_CONTAINER_NAME --restart unless-stopped -p 5000:5000 $DOCKERHUB_USER/$BACKEND_IMAGE:latest
+EOF
                     """
                 }
             }
