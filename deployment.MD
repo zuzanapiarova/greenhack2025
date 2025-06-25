@@ -234,6 +234,8 @@ Add the SSH private key to Jenkins credentials (e.g., as a "SSH Username with pr
 
 Make sure your EC2 instance’s security group allows SSH from your Jenkins server.
 
+To check if something is already running on the port: sudo lsof -i :80
+
 Also ensure Jenkins is open on 8080 for GitHub for triggers - for testing for all traffic, later only github webhook ip's from their API. 
 
 Triggering on code commit:

@@ -108,6 +108,7 @@ pipeline {
                     } catch (e) {
                         error "Frontend test or health check failed: ${e.getMessage()}"
                     } finally {
+                        echo "Running cleanup in finally block for container ${frontendTestContainer}"
                         sh "docker stop $frontendTestContainer || true"
                         sh "docker rm $frontendTestContainer || true"
                     }
