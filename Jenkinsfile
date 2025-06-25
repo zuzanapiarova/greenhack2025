@@ -93,8 +93,8 @@ pipeline {
         stage('Test Frontend') {
             steps {
                 script {
+                    def frontendTestContainer = "test-frontend-${BUILD_NUMBER}"
                     try {
-                        def frontendTestContainer = "test-frontend-${BUILD_NUMBER}"
                         sh "docker run -d --name ${frontendTestContainer} -p 80:80 $DOCKERHUB_USER/$FRONTEND_IMAGE:$IMAGE_TAG"
                         sleep(5)
                         
