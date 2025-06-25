@@ -103,7 +103,7 @@ pipeline {
                             returnStdout: true
                         ).trim()
                         
-                        if (!output.contains('"status":"ok"')) {
+                        if (!output.contains('"status": "ok"')) {
                             error "Frontend health check failed: ${output}"
                         }
                     } catch (e) {
