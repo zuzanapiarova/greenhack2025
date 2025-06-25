@@ -52,7 +52,7 @@ sudo systemctl start jenkins
 <!-- finish jenkins setup in browser -->
 jenkins should be now available at http://ec2-public-ip:8080
 password is stored in /var/lib/jenkins/secrets/initialAdminPassword - use sudo
-install necessary plugins for Jenkins - git, pipeline, nodejs, github integration, github branch source, credentials binding, docker pipeline, maybe Amazon ECR, Pipeline: AWS Steps, Slack Notifier
+install necessary plugins for Jenkins - git, pipeline, nodejs, github integration, github branch source, ssh Agent, credentials binding, docker pipeline, maybe Amazon ECR, Pipeline: AWS Steps, Slack Notifier
 add Dockerhub credentials into jenkins secrets 
 
 <!-- install Docker -->
