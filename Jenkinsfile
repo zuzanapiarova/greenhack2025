@@ -161,8 +161,7 @@ pipeline {
 
                             # Run new backend container
                             docker run -d --name $BACKEND_CONTAINER_NAME --restart unless-stopped -p 5000:5000 $DOCKERHUB_USER/$BACKEND_IMAGE:latest
-
-                        EOF
+                            EOF
                     """
                 }
             }
