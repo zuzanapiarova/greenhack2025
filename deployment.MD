@@ -234,5 +234,14 @@ Add the SSH private key to Jenkins credentials (e.g., as a "SSH Username with pr
 
 Make sure your EC2 instance’s security group allows SSH from your Jenkins server.
 
+Also ensure Jenkins is open on 8080 for GitHub for triggers - for testing for all traffic, later only github webhook ip's from their API. 
+
 Triggering on code commit:
 1. in Jenkins, select the pipeline->configuration, and under dscription, select GitHub project, add project URL, and under triggers, select Github hook trigger for GitSCM polling. 
+
+In your GitHub repo:
+Go to Settings → Webhooks → Add webhook
+Set:
+Payload URL: http://<your-jenkins-url>/github-webhook/
+Content type: application/json
+Events: Choose "Just the push event"
