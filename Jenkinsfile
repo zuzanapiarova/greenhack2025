@@ -6,7 +6,7 @@ pipeline {
         DOCKERHUB_USER='zuzanapiarova'
         BACKEND_IMAGE='backend-img'
         FRONTEND_IMAGE='frontend-img'
-        EC2_PUBLIC_IP='18.193.81.64'
+        EC2_PUBLIC_IP=credentials('EC2_PUBLIC_IP')
         FRONTEND_CONTAINER_NAME='frontend-container'
         BACKEND_CONTAINER_NAME='backend-container'
     }
@@ -15,7 +15,8 @@ pipeline {
 
         stage('Clone repository') {
             steps {
-                git branch:'main', url: 'https://github.com/mifavoyke/GreenHack.git'
+                checkout scm
+                //git branch:'main', url: 'https://github.com/zuzanapiarova/greenhack2025'
             }
         }
 
