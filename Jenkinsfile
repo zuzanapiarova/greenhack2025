@@ -98,11 +98,11 @@ pipeline {
                         sleep(5)
                         
                         def output = sh(
-                            script: "curl --fail http://localhost:80/health.html",
+                            script: "curl --fail http://localhost:80/health.json",
                             returnStdout: true
                         ).trim()
                         
-                        if (!output.contains('OK')) {
+                        if (!output.contains('"status":"ok"')) {
                             error "Frontend health check failed: ${output}"
                         }
                     } catch (e) {
