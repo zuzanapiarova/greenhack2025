@@ -23,7 +23,7 @@ pipeline {
             steps {
                 dir('app/backend') {
                     script {
-                        sh "docker build -t $DOCKERHUB_USER/$BACKEND_IMAGE ."
+                        sh "docker build -t $DOCKERHUB_USER/$BACKEND_IMAGE:$IMAGE_TAG ."
                     }
                 }
             }
@@ -84,7 +84,7 @@ pipeline {
         stage('Build frontend image') {
             steps {
                 dir('app/frontend') {
-                    sh "docker build -t $DOCKERHUB_USER/$FRONTEND_IMAGE ."
+                    sh "docker build -t $DOCKERHUB_USER/$FRONTEND_IMAGE:$IMAGE_TAG ."
                 }
             }
         }

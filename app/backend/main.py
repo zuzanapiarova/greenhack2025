@@ -53,7 +53,7 @@ def get_filtered_map_data():
     result_offset = 0
     page_size = 1000  # Max records per request
     
-    while result_offset < 15001:
+    while result_offset < 10000:
         params = {
             "f": "geojson",
             "geometry": json.dumps(esri_geometry_loaded),
