@@ -34,7 +34,7 @@ pipeline {
                 script {
                     def backendTestContainer = "test-backend-${BUILD_NUMBER}"
                     try {
-                        sh "docker run -d --name $backendTestContainer -p 15000:5000 $DOCKERHUB_USER/$BACKEND_IMAGE:$IMAGE_TAG"
+                        sh "docker run -d --name $backendTestContainer -p 5000:5000 $DOCKERHUB_USER/$BACKEND_IMAGE:$IMAGE_TAG"
                         timeout(time: 30, unit: 'SECONDS') {
                             waitUntil {
                                 def status = sh(
@@ -94,7 +94,7 @@ pipeline {
                 script {
                     try {
                         def frontendTestContainer = "test-frontend-${BUILD_NUMBER}"
-                        sh "docker run -d --name ${frontendTestContainer} -p 18000:80 $DOCKERHUB_USER/$FRONTEND_IMAGE:$IMAGE_TAG"
+                        sh "docker run -d --name ${frontendTestContainer} -p 80:80 $DOCKERHUB_USER/$FRONTEND_IMAGE:$IMAGE_TAG"
                         sleep(5)
                         
                         def output = sh(
